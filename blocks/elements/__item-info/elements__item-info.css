@@ -1,0 +1,9 @@
+.elements__item-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    height: 80px;
+}

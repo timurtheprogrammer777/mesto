@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Место</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body class="page">
+    <div class="root">
+
+        <header class="header">
+            <img class="header__logo" src="./images/logo.svg" alt="Лого">
+            <div class="header__line"></div>
+        </header>
+
+        <main class="content">
+
+            <section class="profile">
+                <img class="profile__avatar" src="./images/Avatar.svg" alt="Аватар профиля">
+                <div class="profile__info">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <button class="profile__edit-button">
+                        <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.5" y="0.5" width="23" height="23" stroke="white"/>
+                            <path d="M17 8.32827L9.60377 15.7666L8.28302 14.4194L15.6604 7L17 8.32827ZM7 17L8.96226 16.4118L7.58491 15.0835L7 17Z" fill="white"/>
+                        </svg>
+                    </button>
+                    <p class="profile__subtitle">Исследователь океана</p>
+                </div>
+                <button class="profile__add-button">
+                    <svg class="profile__add-button-cross"  viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="0.6" d="M22 9.77778H12.2222V0H9.77778V9.77778H0V12.2222H9.77778V22H12.2222V12.2222H22V9.77778Z" fill="white"/>
+                    </svg>
+                </button> 
+            </section>
+            <section class="elements">
+                <ul class="elements__list">
+                    <li class="elements__item">
+                        <img class="elements__image" src="./images/elements-1.jpg" alt="Фото природы">
+                        <div class="elements__item-info">
+                            <h2 class="elements__title">Карачаевск</h2>
+                            <img class="elements__like elements__like_active" src="./images/heart.svg" alt="Лайк">
+                        </div>
+                    </li>
+                    <li class="elements__item">
+                        <img class="elements__image" src="./images/elements-2.jpg" alt="Фото природы">
+                        <div class="elements__item-info">
+                            <h2 class="elements__title">Гора Эльбрус</h2>
+                            <img class="elements__like elements__like_active" src="./images/heart.svg" alt="Лайк">
+                        </div>
+                    </li>
+                    <li class="elements__item">
+                        <img class="elements__image" src="./images/elements-3.jpg" alt="Фото природы">
+                        <div class="elements__item-info">
+                            <h2 class="elements__title">Домбай</h2>
+                            <img class="elements__like elements__like_active" src="./images/heart.svg" alt="Лайк">
+                        </div>
+                    </li>
+                    <li class="elements__item">
+                        <img class="elements__image" src="./images/elements-4.jpg" alt="Фото природы">
+                        <div class="elements__item-info">
+                            <h2 class="elements__title">Гора Эльбрус</h2>
+                            <img class="elements__like elements__like_active" src="./images/heart.svg" alt="Лайк">
+                        </div>
+                    </li>
+                    <li class="elements__item">
+                        <img class="elements__image" src="./images/elements-5.jpg" alt="Фото природы">
+                        <div class="elements__item-info">
+                            <h2 class="elements__title">Домбай</h2>
+                            <img class="elements__like elements__like_active" src="./images/heart.svg" alt="Лайк">
+                        </div>
+                    </li>
+                    <li class="elements__item">
+                        <img class="elements__image" src="./images/elements-6.jpg" alt="Фото природы">
+                        <div class="elements__item-info">
+                            <h2 class="elements__title">Карачаево-Черкесия</h2>
+                            <img class="elements__like elements__like_active" src="./images/heart.svg" alt="Лайк">
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="popup">
+                
+                <div class="popup__container">
+                    <svg class="popup__close"  viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M32.7905 29.5903L19.9905 16.7903L32.7905 3.99028L29.5905 0.790283L16.7905 13.5903L3.99053 0.790283L0.790527 3.99028L13.5905 16.7903L0.790527 29.5903L3.99053 32.7903L16.7905 19.9903L29.5905 32.7903L32.7905 29.5903Z" fill="white"/>
+                    </svg>
+                    <h2 class="popup__title">Редактировать профиль</h2>
+                    <form class="popup__form" action="#">
+                        <input class="popup__input popup__input-title" type="text" >
+                        <input class="popup__input popup__input-subtitle" type="text" >
+                        <button class="popup__button">Сохранить</button>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+        </footer>
+
+    </div>
+    <script src="./vendor/script.js"></script>
+</body>
+</html>
