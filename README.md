@@ -13,4 +13,4 @@ CSS3
 
 **Ссылка на проект**
 
-https://timurtheprogrammer777.github.io/index.html
+https://timurtheprogrammer777.github.io/mesto/
