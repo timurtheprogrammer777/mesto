@@ -1,39 +1,35 @@
 
-const editButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
 const popupClose = document.querySelector('.popup__close');
+const buttonEdit = document.querySelector('.profile__edit-button');
 const popupButton = document.querySelector('.popup__button');
 
-const formInput = document.querySelector('.popup__input');
+const popupForm = document.querySelector('.popup__form');
 
-function openedPopup() {
-    popup.classList.add('popup_opened');
-}
-
-editButton.addEventListener('click', openedPopup);
-
-function closedPopup() {
-    popup.classList.remove('popup_opened');
-}
-
-popupClose.addEventListener('click', closedPopup);
-popupButton.addEventListener('click', closedPopup);
-
-
-
-const input = document.querySelectorAll('.popup__input');
-const inputTitle = document.querySelector('.popup__input-title');
-const inputSubtitle = document.querySelector('.popup__input-subtitle');
+const formInputTitle = document.querySelector('#popup__input-title');
+const formInputSubtitle = document.querySelector('#popup__input-subtitle');
 
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
-inputTitle.value = 'Жак-Ив Кусто';
-inputSubtitle.value = 'Исследователь океана';
+
+
+function openedPopup() {
+    popup.classList.add('popup_opened');
+    formInputTitle.value = profileTitle.textContent;
+    formInputSubtitle.value = profileSubtitle.textContent;
+} // функция открывает попап и заносит вэлью значние из инпутов в текст классов profile__title и profile__subtitle
+
+function closedPopup() {
+    popup.classList.remove('popup_opened');
+} // функция закрывает попап
 
 function getInput() {
-    profileTitle.textContent = inputTitle.value;
-    profileSubtitle.textContent = inputSubtitle.value;
-}
+    profileTitle.textContent = formInputTitle.value;
+    profileSubtitle.textContent = formInputSubtitle.value;
+} // функция
 
-popupButton.addEventListener('click', getInput);
+buttonEdit.addEventListener('click', openedPopup);
+popupForm.addEventListener('click', getInput);
+popupClose.addEventListener('click', closedPopup);
+
