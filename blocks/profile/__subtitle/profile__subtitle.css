@@ -9,7 +9,6 @@
     overflow: hidden;
     grid-area:profile__subtitle;
 }
-
 @media screen and (max-width:765px){
     .profile__subtitle{
         text-align: center;
