@@ -5,12 +5,12 @@
 }
 @media screen and (max-width:1279px){
     .root{
-            padding: 45px 50px 60px;
+        padding: 45px 50px 60px;
     }
 }
 @media screen and (max-width:400px){
     .root{
-            padding: 28px 19px 36px;
+        padding: 28px 19px 36px;
     }
 }
 @media screen and (max-width:320px){
