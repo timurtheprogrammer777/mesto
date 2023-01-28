@@ -18,7 +18,7 @@
         <main class="content">
 
             <section class="profile">   
-                <img class="profile__avatar" src="./images/icon_glasses_whiteongrey.svg" alt="Аватар профиля">     
+                <img class="profile__avatar" src="./images/Avatar.svg" alt="Аватар профиля">     
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button class="profile__edit-button" type="button">
@@ -32,60 +32,19 @@
             </section>
             <section class="elements">
                 <ul class="elements__list">
-                    <li class="element">
-                        <img class="element__image" src="./images/elements-1.jpg" alt="Фото природы">
-                        <div class="element__item-info">
-                            <h2 class="element__title">Карачаевск</h2>
-                            <button class="element__button" type="button">
-                                <img class="element__like" src="./images/heart.svg" alt="Лайк">
-                            </button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img class="element__image" src="./images/elements-2.jpg" alt="Фото природы">
-                        <div class="element__item-info">
-                            <h2 class="element__title">Гора Эльбрус</h2>
-                            <button class="element__button" type="button">
-                                <img class="element__like" src="./images/heart.svg" alt="Лайк">
-                            </button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img class="element__image" src="./images/elements-3.jpg" alt="Фото природы">
-                        <div class="element__item-info">
-                            <h2 class="element__title">Домбай</h2>
-                            <button class="element__button" type="button">
-                                <img class="element__like" src="./images/heart.svg" alt="Лайк">
-                            </button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img class="element__image" src="./images/elements-4.jpg" alt="Фото природы">
-                        <div class="element__item-info">
-                            <h2 class="element__title">Гора Эльбрус</h2>
-                            <button class="element__button" type="button">
-                                <img class="element__like" src="./images/heart.svg" alt="Лайк">
-                            </button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img class="element__image" src="./images/elements-5.jpg" alt="Фото природы">
-                        <div class="element__item-info">
-                            <h2 class="element__title">Домбай</h2>
-                            <button class="element__button" type="button">
-                                <img class="element__like" src="./images/heart.svg" alt="Лайк">
-                            </button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img class="element__image" src="./images/elements-6.jpg" alt="Фото природы">
-                        <div class="element__item-info">
-                            <h2 class="element__title">Карачаево-Черкесия</h2>
-                            <button class="element__button" type="button">
-                                <img class="element__like" src="./images/heart.svg" alt="Лайк">
-                            </button>
-                        </div>
-                    </li>
+
+                    <template class="template__element" id="template__element">
+                        <li class="element">
+                            <img class="element__image" src="" alt="Фото природы">
+                            <div class="element__item-info">
+                                <h2 class="element__title"></h2>
+                                <button class="element__button" type="button">
+                                    <img class="element__like" src="./images/heart.svg" alt="Лайк">
+                                </button>
+                            </div>
+                        </li>
+                    </template>
+                   
                 </ul>
             </section>
 
@@ -102,6 +61,21 @@
                     </form>
                 </div>
             </div>
+
+             <div class="popup popup_type_add">            
+                <div class="popup__container">
+                    <button class="popup__close-button popup__close-button_type_add" type="button">
+                        <img class="popup__close" src="./images/Close_Icon.svg" alt="Иконка закрытия попапа">
+                    </button>
+                    <h2 class="popup__title popup__title_type_add">Новое место</h2>
+                    <form class="popup__form popup__form_type_add" action="#" name="form-add">
+                        <input class="popup__input" placeholder="Название" id="popup__input-title_type_add" name="popup__input-title_type_add" type="text" >
+                        <input class="popup__input" placeholder="Ссылка на картинку" id="popup__input-subtitle_type_add" name="popup__input-subtitle_type_add" type="text" >
+                        <button class="popup__button popup__button_type_add" type="submit">Создать</button>
+                    </form>
+                </div>
+            </div>
+
 
         </main>
 

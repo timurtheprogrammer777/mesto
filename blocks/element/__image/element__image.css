@@ -1,5 +1,7 @@
 .element__image{
     display: block;
+    width: 282px;
+    height: 282px;
     margin: 0;
     padding: 0;  
 }
