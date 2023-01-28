@@ -74,12 +74,14 @@ const cardImage = templateElement.querySelector('.element__image');
 const cardTitle = templateElement.querySelector('.element__title');
 
 function renderCards() {
-    initialCards.forEach( item => {
+    const cards = initialCards.map( item => {
         cardImage.src = item.link;
         cardTitle.textContent = item.name;
         const card = templateElement.cloneNode(true);
-        elementList.append(card);
+        
+        return card;
     });
+    elementList.append(...cards);
 }
 renderCards();
 
@@ -91,17 +93,19 @@ function closePopupAdd() {
 }
 function addCard(evt) {
     evt.preventDefault();
-    formInputSubtitleAdd.value =  cardTitle.textContent;
-    formInputTitleAdd.value =  cardImage.src;
-    console.log('123');
+    cardTitle.textContent = formInputTitleAdd.value;
+    cardImage.src =  formInputSubtitleAdd.value;
+    const card = templateElement.cloneNode(true);
+
+    elementList.prepend(card)
     closePopupAdd();
 }
 
-function createCard(){
-    cardImage.src = item.link;
-    cardTitle.textContent = item.name;
-    const card = templateElement.cloneNode(true);
-}
+// function createCard(){
+//     cardImage.src = item.link;
+//     cardTitle.textContent = item.name;
+//     const card = templateElement.cloneNode(true);
+// }
 
 buttonAdd.addEventListener('click', openPopupAdd);
 popupCloseAdd.addEventListener('click', closePopupAdd);
