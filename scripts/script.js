@@ -73,8 +73,6 @@ const initialCards = [
 const cardImage = templateElement.querySelector('.element__image');
 const cardTitle = templateElement.querySelector('.element__title');
 
-// const like = document.querySelector('.element__like');
-// const likeButton = document.querySelector('.element__button');
 
 function renderCards() {
     const cards = initialCards.map( item => {
@@ -82,14 +80,15 @@ function renderCards() {
         cardTitle.textContent = item.name;
         const card = templateElement.cloneNode(true);
         
-      // const like = templateElement.querySelector('.element__like').addEventListener('click', (evt) => {
-      //   evt.target.classList.toggle('element__like_active');
-      //  });
-      
+
        const likeButton = card.querySelector('.element__button');
        likeButton.addEventListener('click', (evt) => {
         evt.target.classList.toggle('element__like_active');
        });
+       const ButtonDelete = card.querySelector('.element__trash-icon');
+       ButtonDelete.addEventListener('click', () => {
+        card.remove();
+      });
 
 
 
@@ -112,34 +111,25 @@ function addCard(evt) {
     cardImage.src =  formInputSubtitleAdd.value;
     const card = templateElement.cloneNode(true);
     
-  
+    const likeButton = card.querySelector('.element__button');
+    likeButton.addEventListener('click', (evt) => {
+      evt.target.classList.toggle('element__like_active');
+    });
+
+    const ButtonDelete = card.querySelector('.element__trash-icon');
+       ButtonDelete.addEventListener('click', () => {
+        card.remove();
+      });
+
+
     elementList.prepend(card);
     closePopupAdd();
 }
 
-// function createCard(){
-//     cardImage.src = item.link;
-//     cardTitle.textContent = item.name;
-//     const card = templateElement.cloneNode(true);
-// }
-function addLike(){
-  // const like = document.querySelector('.element__like');
-  // const likeButton = document.querySelector('.element__button');
-  like.classList.toggle('element__like_active');
-}
-
-
-
-//  likeButton.forEach(button => {
-//     button.addEventListener('click', likeBlack);
-//  });
-
-//  function likeBlack () {
-//   like[0].classList.toggle('element__like_active');
-//  }
-
-
-// likeButton.addEventListener('click', activeLike);
+// const ButtonDelete = templateElement.querySelector('.element__trash-icon');
+// ButtonDelete.addEventListener('click', () =>{
+//   card.remove();
+// });
 
 buttonAdd.addEventListener('click', openPopupAdd);
 popupCloseAdd.addEventListener('click', closePopupAdd);
