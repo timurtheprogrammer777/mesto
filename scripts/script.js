@@ -73,15 +73,30 @@ const initialCards = [
 const cardImage = templateElement.querySelector('.element__image');
 const cardTitle = templateElement.querySelector('.element__title');
 
+// const like = document.querySelector('.element__like');
+// const likeButton = document.querySelector('.element__button');
+
 function renderCards() {
     const cards = initialCards.map( item => {
         cardImage.src = item.link;
         cardTitle.textContent = item.name;
         const card = templateElement.cloneNode(true);
         
+      // const like = templateElement.querySelector('.element__like').addEventListener('click', (evt) => {
+      //   evt.target.classList.toggle('element__like_active');
+      //  });
+      
+       const likeButton = card.querySelector('.element__button');
+       likeButton.addEventListener('click', (evt) => {
+        evt.target.classList.toggle('element__like_active');
+       });
+
+
+
         return card;
     });
     elementList.append(...cards);
+    // addLike();
 }
 renderCards();
 
@@ -96,8 +111,9 @@ function addCard(evt) {
     cardTitle.textContent = formInputTitleAdd.value;
     cardImage.src =  formInputSubtitleAdd.value;
     const card = templateElement.cloneNode(true);
-
-    elementList.prepend(card)
+    
+  
+    elementList.prepend(card);
     closePopupAdd();
 }
 
@@ -106,6 +122,24 @@ function addCard(evt) {
 //     cardTitle.textContent = item.name;
 //     const card = templateElement.cloneNode(true);
 // }
+function addLike(){
+  // const like = document.querySelector('.element__like');
+  // const likeButton = document.querySelector('.element__button');
+  like.classList.toggle('element__like_active');
+}
+
+
+
+//  likeButton.forEach(button => {
+//     button.addEventListener('click', likeBlack);
+//  });
+
+//  function likeBlack () {
+//   like[0].classList.toggle('element__like_active');
+//  }
+
+
+// likeButton.addEventListener('click', activeLike);
 
 buttonAdd.addEventListener('click', openPopupAdd);
 popupCloseAdd.addEventListener('click', closePopupAdd);

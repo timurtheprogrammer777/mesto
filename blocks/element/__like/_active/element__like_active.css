@@ -1,0 +1,8 @@
+.element__like_active{
+    position: absolute;
+    background-image: url(../../../../images/heart_active.svg);
+    width: 22px;
+    height: 19px;
+    bottom: 9%;
+    right: 3%;
+}
