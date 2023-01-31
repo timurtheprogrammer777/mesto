@@ -5,6 +5,7 @@
     width: 18px;
     height: 19px;
     cursor: pointer;
+    transition: all .3s;
 }
 .element__trash-icon:hover{
     opacity: 0.5;

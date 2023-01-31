@@ -1,4 +1,4 @@
-.popup__close-button{
+.close-icon{
     border: none;
     background: none;
     margin: 0;
@@ -11,18 +11,18 @@
     transition: all .3s;
     cursor: pointer;
 }
-.popup__close-button:hover{
+.close-icon:hover{
     opacity: 0.6;
 }
 
 @media screen and (max-width:700px){
-    .popup__close-button{
+    .close-icon{
         top: -17%;
         left: 89%;
     }
 }
 @media screen and (max-width:320px){
-    .popup__close-button{
+    .close-icon{
         top: -12%;
         left: 91%;
     }

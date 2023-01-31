@@ -1,5 +1,5 @@
 const popup = document.querySelector('.popup');
-const popupClose = document.querySelector('.popup__close');
+const popupClose = document.querySelector('.close-icon__image');
 const buttonEdit = document.querySelector('.profile__edit-button');
 
 const popupForm = document.querySelector('.popup__form');
@@ -34,7 +34,7 @@ popupForm.addEventListener('submit', getInput);
 
 const popupAdd = document.querySelector('.popup_type_add')
 const buttonAdd = document.querySelector('.profile__add-button');
-const popupCloseAdd = document.querySelector('.popup__close-button_type_add');
+const popupCloseAdd = document.querySelector('.close-icon_type_add');
 const popupFormAdd = document.querySelector('.popup__form_type_add');
 
 const templateElement = document
@@ -74,13 +74,20 @@ const cardImage = templateElement.querySelector('.element__image');
 const cardTitle = templateElement.querySelector('.element__title');
 
 
+
+
+
+
+
+
+
+
+
 function renderCards() {
     const cards = initialCards.map( item => {
         cardImage.src = item.link;
         cardTitle.textContent = item.name;
         const card = templateElement.cloneNode(true);
-        
-
        const likeButton = card.querySelector('.element__button');
        likeButton.addEventListener('click', (evt) => {
         evt.target.classList.toggle('element__like_active');
@@ -88,14 +95,28 @@ function renderCards() {
        const ButtonDelete = card.querySelector('.element__trash-icon');
        ButtonDelete.addEventListener('click', () => {
         card.remove();
+
+
+
+// cardImagePop.forEach(image => {
+//      image.addEventListener('click', () => {
+    //  popupImageText.textContent = popupTitleText.textContent;
+    //  cardImagePop.src  = cardImagePop.src;
+    //  const popupImageText = popupImage.querySelector('.popup-image__discription');
+    //  popupImageText.textContent = popupTitleText.textContent;
+    //  popupImageImage.src = cardImage.src;
+//      popupImage.classList.add('popup-image_opened');
+//    });
+// });
+
+
+
+
+        
       });
-
-
-
         return card;
     });
     elementList.append(...cards);
-    // addLike();
 }
 renderCards();
 
@@ -109,26 +130,46 @@ function addCard(evt) {
     evt.preventDefault();
     cardTitle.textContent = formInputTitleAdd.value;
     cardImage.src =  formInputSubtitleAdd.value;
-    const card = templateElement.cloneNode(true);
-    
+    const card = templateElement.cloneNode(true);   
     const likeButton = card.querySelector('.element__button');
     likeButton.addEventListener('click', (evt) => {
       evt.target.classList.toggle('element__like_active');
     });
-
     const ButtonDelete = card.querySelector('.element__trash-icon');
        ButtonDelete.addEventListener('click', () => {
         card.remove();
       });
-
-
     elementList.prepend(card);
     closePopupAdd();
 }
+const popupImageImage = document.querySelector('.popup-image__image');
+const popupTitleText = document.querySelectorAll('.title-pop');
+const popupImageText = document.querySelector('.popup-image__discription');
+const popupImage = document.querySelector('.popup-image');
+const cardImagePop = document.querySelectorAll('.image-pop');
 
-// const ButtonDelete = templateElement.querySelector('.element__trash-icon');
-// ButtonDelete.addEventListener('click', () =>{
-//   card.remove();
+// function lala () {
+//   popupImage.classList.add('popup-image_opened');
+//    cardImagePop.forEach(image => {
+//    popupImageImage.src = image.src;
+//    });
+//    popupTitleText.forEach(text => {
+//     popupImageText.textContent = text.textContent;
+//    });
+// }
+// cardImagePop.forEach(card => {
+//   card.addEventListener('click', lala);
+// });
+
+// cardImagePop.forEach(image => {
+//     image.addEventListener('click', () => {
+//     popupImage.classList.add('popup-image_opened');
+//     popupImageImage.src = image.src;
+//     // popupImageText.textContent = popupTitleText.textContent;
+//   });
+//     image.addEventListener('click', () => {
+//       popupImageText.textContent = image.textContent;
+//     });
 // });
 
 buttonAdd.addEventListener('click', openPopupAdd);
