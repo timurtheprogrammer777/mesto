@@ -75,7 +75,7 @@ const cardTitle = templateElement.querySelector('.element__title');
 
 
 
-
+const popupImage = document.querySelector('.popup-image');
 
 
 
@@ -100,15 +100,16 @@ function renderCards() {
     });
 
   const popupTitleText = card.querySelector('.title-pop');
+  const cardImagePop = card.querySelector('.image-pop');
   const popupImageText = document.querySelector('.popup-image__discription');
   const popupImageImage = document.querySelector('.popup-image__image');
-  const cardImagePop = card.querySelector('.image-pop');
+
   cardImagePop.addEventListener('click', () => {
     popupImage.classList.add('popup-image_opened');
     popupImageImage.src = cardImagePop.src;
     popupImageText.textContent = popupTitleText.textContent;
+    
   });
-
 
     return card;
   });
@@ -124,55 +125,35 @@ function closePopupAdd() {
     popupAdd.classList.remove('popup_opened');
 }
 function addCard(evt) {
-    evt.preventDefault();
-    cardTitle.textContent = formInputTitleAdd.value;
-    cardImage.src =  formInputSubtitleAdd.value;
-    const card = templateElement.cloneNode(true);   
-    const likeButton = card.querySelector('.element__button');
-    likeButton.addEventListener('click', (evt) => {
-      evt.target.classList.toggle('element__like_active');
-    });
-    const ButtonDelete = card.querySelector('.element__trash-icon');
-       ButtonDelete.addEventListener('click', () => {
-        card.remove();
-      });
-    elementList.prepend(card);
-    closePopupAdd();
+  evt.preventDefault();
+  cardTitle.textContent = formInputTitleAdd.value;
+  cardImage.src =  formInputSubtitleAdd.value;
+  const card = templateElement.cloneNode(true);   
+
+  const likeButton = card.querySelector('.element__button');
+  likeButton.addEventListener('click', (evt) => {
+    evt.target.classList.toggle('element__like_active');
+  });
+
+  const ButtonDelete = card.querySelector('.element__trash-icon');
+  ButtonDelete.addEventListener('click', () => {
+    card.remove();
+  });
+
+  const popupTitleText = card.querySelector('.title-pop');
+  const cardImagePop = card.querySelector('.image-pop');
+  const popupImageText = document.querySelector('.popup-image__discription');
+  const popupImageImage = document.querySelector('.popup-image__image');
+
+  cardImagePop.addEventListener('click', () => {
+    popupImage.classList.add('popup-image_opened');
+    popupImageImage.src = cardImagePop.src;
+    popupImageText.textContent = popupTitleText.textContent;
+  });
+
+  elementList.prepend(card);
+  closePopupAdd();
 }
-// const popupImageImage = document.querySelector('.popup-image__image');
-// const popupTitleText = document.querySelectorAll('.title-pop');
-// const popupImageText = document.querySelector('.popup-image__discription');
-const popupImage = document.querySelector('.popup-image');
-// const cardImagePop = document.querySelectorAll('.image-pop');
-
-// function lala () {
-//   popupImage.classList.add('popup-image_opened');
-//    cardImagePop.forEach(image => {
-//    popupImageImage.src = image.src;
-//    });
-//    popupTitleText.forEach(text => {
-//     popupImageText.textContent = text.textContent;
-//    });
-// }
-// cardImagePop.forEach(card => {
-//   card.addEventListener('click', lala);
-// });
-
-
-// cardImagePop.forEach(image => {
-//     image.addEventListener('click', () => {
-//     popupImage.classList.add('popup-image_opened');
-//     popupImageImage.src = image.src;
-//     // popupImageText.textContent = popupTitleText;
-//   });
-// });
-// popupTitleText.forEach(text => {
-//     text.addEventListener('click', () => {
-//     popupImage.classList.add('popup-image_opened');
-//     popupImageText.textContent = text.textContent;
-//     // popupImageText.textContent = popupTitleText;
-//   });
-// });
 
 
 
@@ -180,26 +161,3 @@ buttonAdd.addEventListener('click', openPopupAdd);
 popupCloseAdd.addEventListener('click', closePopupAdd);
 popupFormAdd.addEventListener('submit', addCard);
 
-
-// function lala(){
-//   popupImage.classList.add('popup-image_opened');
-
-//   // cardImagePop.forEach(image => {
-//   //     // image.addEventListener('click', () => {
-//   //     // popupImage.classList.add('popup-image_opened');
-//   //     popupImageImage.src = image.src;
-//   //     // popupImageText.textContent = popupTitleText;
-//   //   // });
-//   // });
-//   // popupTitleText.forEach(text => {
-//   //     // text.addEventListener('click', () => {
-//   //     // popupImage.classList.add('popup-image_opened');
-//   //     popupImageText.textContent = text.textContent;
-//   //     // popupImageText.textContent = popupTitleText;
-//   //   // });
-//   // });
-// }
-
-// cardImagePop.forEach(card => {
-//   card.addEventListener('click', lala);
-// });
