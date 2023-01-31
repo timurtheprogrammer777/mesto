@@ -30,7 +30,7 @@ buttonEdit.addEventListener('click', openPopup);
 popupClose.addEventListener('click', closePopup);
 popupForm.addEventListener('submit', getInput);
 
-// втроя проктная работа //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// вторая проектная работа по JS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const popupAdd = document.querySelector('.popup_type_add')
 const buttonAdd = document.querySelector('.profile__add-button');
@@ -77,10 +77,16 @@ const cardTitle = templateElement.querySelector('.element__title');
 
 const popupImage = document.querySelector('.popup-image');
 
+const popupImageText = document.querySelector('.popup-image__discription');
+const popupImageImage = document.querySelector('.popup-image__image');
 
 
+function closePopupImg() {
+    popupImage.classList.remove('popup-image_opened');
+} // функция закрывает попап
 
-
+popupCloseImg = document.querySelector('.close-icon_theme_popup-image');
+popupCloseImg.addEventListener('click', closePopupImg);
 
 
 function renderCards() {
@@ -101,14 +107,10 @@ function renderCards() {
 
   const popupTitleText = card.querySelector('.title-pop');
   const cardImagePop = card.querySelector('.image-pop');
-  const popupImageText = document.querySelector('.popup-image__discription');
-  const popupImageImage = document.querySelector('.popup-image__image');
-
   cardImagePop.addEventListener('click', () => {
     popupImage.classList.add('popup-image_opened');
     popupImageImage.src = cardImagePop.src;
     popupImageText.textContent = popupTitleText.textContent;
-    
   });
 
     return card;
@@ -142,9 +144,6 @@ function addCard(evt) {
 
   const popupTitleText = card.querySelector('.title-pop');
   const cardImagePop = card.querySelector('.image-pop');
-  const popupImageText = document.querySelector('.popup-image__discription');
-  const popupImageImage = document.querySelector('.popup-image__image');
-
   cardImagePop.addEventListener('click', () => {
     popupImage.classList.add('popup-image_opened');
     popupImageImage.src = cardImagePop.src;
@@ -154,6 +153,7 @@ function addCard(evt) {
   elementList.prepend(card);
   closePopupAdd();
 }
+
 
 
 
