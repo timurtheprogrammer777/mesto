@@ -78,7 +78,6 @@ const initialCards = [
 ]; 
 
 
-
 function renderCards() {
   const cards = initialCards.map( item => {
     cardImage.src = item.link;
@@ -104,7 +103,6 @@ function renderCards() {
 renderCards();
 
 
-
 function openPopupAdd() {
     popupAdd.classList.add('popup_opened');
 }
@@ -114,6 +112,9 @@ function closePopupAdd() {
 function closePopupImg() {
     popupImage.classList.remove('popup-image_opened');
 } 
+function likeFunc(evt){
+    evt.target.classList.toggle('element__like_active');
+}
 
 
 function addCard(evt) {
@@ -144,8 +145,4 @@ popupCloseAdd.addEventListener('click', closePopupAdd);
 popupFormAdd.addEventListener('submit', addCard);
 
 
-
-function likeFunc(evt){
-    evt.target.classList.toggle('element__like_active');
-}
 
