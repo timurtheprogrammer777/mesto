@@ -83,8 +83,8 @@ function renderCards() {
   const cards = initialCards.map( item => {
     cardImage.src = item.link;
     cardTitle.textContent = item.name;
+    cardImage.alt = cardTitle.textContent;
     const card = templateElement.cloneNode(true);
-
     const likeButton = card.querySelector('.element__button');
     likeButton.addEventListener('click', (evt) => {
       evt.target.classList.toggle('element__like_active');
@@ -110,6 +110,13 @@ function renderCards() {
 }
 renderCards();
 
+function openPopupA(a) {
+    a.classList.add('popup_opened');
+}
+function closePopupA(a) {
+    a.classList.remove('popup_opened');
+}
+
 function openPopupAdd() {
     popupAdd.classList.add('popup_opened');
 }
@@ -125,6 +132,7 @@ function addCard(evt) {
   evt.preventDefault();
   cardTitle.textContent = formInputTitleAdd.value;
   cardImage.src =  formInputSubtitleAdd.value;
+  cardImage.alt = cardTitle.textContent;
   const card = templateElement.cloneNode(true);   
 
   const likeButton = card.querySelector('.element__button');
