@@ -37,9 +37,7 @@ const buttonAdd = document.querySelector('.profile__add-button');
 const popupCloseAdd = document.querySelector('.close-icon_type_add');
 const popupFormAdd = document.querySelector('.popup__form_type_add');
 
-const templateElement = document
-    .querySelector('#template__element')
-    .content.querySelector('.element');
+const templateElement = document.querySelector('#template__element').content.querySelector('.element');
 const elementList = document.querySelector('.elements__list');
 const popupButtonCreate = document.querySelector('.popup__button_type_add');
 const formInputTitleAdd = document.querySelector('#popup__input-title_type_add');
@@ -79,29 +77,24 @@ const initialCards = [
   }
 ]; 
 
+
+
 function renderCards() {
   const cards = initialCards.map( item => {
     cardImage.src = item.link;
     cardTitle.textContent = item.name;
     cardImage.alt = cardTitle.textContent;
     const card = templateElement.cloneNode(true);
-    const likeButton = card.querySelector('.element__button');
-    likeButton.addEventListener('click', (evt) => {
-      evt.target.classList.toggle('element__like_active');
-    });
+    const likeButton = card.querySelector('.element__button').addEventListener('click', likeFunc);
+    const ButtonDelete = card.querySelector('.element__trash-icon').addEventListener('click', () => {card.remove();});
 
-    const ButtonDelete = card.querySelector('.element__trash-icon');
-    ButtonDelete.addEventListener('click', () => {
-      card.remove();
+    const popupTitleText = card.querySelector('.element__title-popup');
+    const cardImagePop = card.querySelector('.element__image-popup');
+    cardImagePop.addEventListener('click', () => {
+      popupImage.classList.add('popup-image_opened');
+      popupImageImage.src = cardImagePop.src;
+      popupImageText.textContent = popupTitleText.textContent;
     });
-
-  const popupTitleText = card.querySelector('.title-pop');
-  const cardImagePop = card.querySelector('.image-pop');
-  cardImagePop.addEventListener('click', () => {
-    popupImage.classList.add('popup-image_opened');
-    popupImageImage.src = cardImagePop.src;
-    popupImageText.textContent = popupTitleText.textContent;
-  });
 
     return card;
   });
@@ -110,12 +103,7 @@ function renderCards() {
 }
 renderCards();
 
-function openPopupA(a) {
-    a.classList.add('popup_opened');
-}
-function closePopupA(a) {
-    a.classList.remove('popup_opened');
-}
+
 
 function openPopupAdd() {
     popupAdd.classList.add('popup_opened');
@@ -125,7 +113,7 @@ function closePopupAdd() {
 }
 function closePopupImg() {
     popupImage.classList.remove('popup-image_opened');
-} // функция закрывает попап
+} 
 
 
 function addCard(evt) {
@@ -135,18 +123,11 @@ function addCard(evt) {
   cardImage.alt = cardTitle.textContent;
   const card = templateElement.cloneNode(true);   
 
-  const likeButton = card.querySelector('.element__button');
-  likeButton.addEventListener('click', (evt) => {
-    evt.target.classList.toggle('element__like_active');
-  });
+  const likeButton = card.querySelector('.element__button').addEventListener('click', likeFunc);
+  const ButtonDelete = card.querySelector('.element__trash-icon').addEventListener('click', () => {card.remove();});
 
-  const ButtonDelete = card.querySelector('.element__trash-icon');
-  ButtonDelete.addEventListener('click', () => {
-    card.remove();
-  });
-
-  const popupTitleText = card.querySelector('.title-pop');
-  const cardImagePop = card.querySelector('.image-pop');
+  const popupTitleText = card.querySelector('.element__title-popup');
+  const cardImagePop = card.querySelector('.element__image-popup');
   cardImagePop.addEventListener('click', () => {
     popupImage.classList.add('popup-image_opened');
     popupImageImage.src = cardImagePop.src;
@@ -161,4 +142,10 @@ popupCloseImg.addEventListener('click', closePopupImg);
 buttonAdd.addEventListener('click', openPopupAdd);
 popupCloseAdd.addEventListener('click', closePopupAdd);
 popupFormAdd.addEventListener('submit', addCard);
+
+
+
+function likeFunc(evt){
+    evt.target.classList.toggle('element__like_active');
+}
 
