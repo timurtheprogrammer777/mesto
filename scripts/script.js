@@ -44,6 +44,14 @@ const elementList = document.querySelector('.elements__list');
 const popupButtonCreate = document.querySelector('.popup__button_type_add');
 const formInputTitleAdd = document.querySelector('#popup__input-title_type_add');
 const formInputSubtitleAdd = document.querySelector('#popup__input-subtitle_type_add');
+
+const cardImage = templateElement.querySelector('.element__image');
+const cardTitle = templateElement.querySelector('.element__title');
+
+const popupImage = document.querySelector('.popup-image');
+const popupImageText = document.querySelector('.popup-image__discription');
+const popupImageImage = document.querySelector('.popup-image__image');
+popupCloseImg = document.querySelector('.close-icon_theme_popup-image');
 const initialCards = [
   {
     name: 'Архыз',
@@ -70,24 +78,6 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ]; 
-const cardImage = templateElement.querySelector('.element__image');
-const cardTitle = templateElement.querySelector('.element__title');
-
-
-
-const popupImage = document.querySelector('.popup-image');
-
-const popupImageText = document.querySelector('.popup-image__discription');
-const popupImageImage = document.querySelector('.popup-image__image');
-
-
-function closePopupImg() {
-    popupImage.classList.remove('popup-image_opened');
-} // функция закрывает попап
-
-popupCloseImg = document.querySelector('.close-icon_theme_popup-image');
-popupCloseImg.addEventListener('click', closePopupImg);
-
 
 function renderCards() {
   const cards = initialCards.map( item => {
@@ -126,6 +116,11 @@ function openPopupAdd() {
 function closePopupAdd() {
     popupAdd.classList.remove('popup_opened');
 }
+function closePopupImg() {
+    popupImage.classList.remove('popup-image_opened');
+} // функция закрывает попап
+
+
 function addCard(evt) {
   evt.preventDefault();
   cardTitle.textContent = formInputTitleAdd.value;
@@ -154,9 +149,7 @@ function addCard(evt) {
   closePopupAdd();
 }
 
-
-
-
+popupCloseImg.addEventListener('click', closePopupImg);
 buttonAdd.addEventListener('click', openPopupAdd);
 popupCloseAdd.addEventListener('click', closePopupAdd);
 popupFormAdd.addEventListener('submit', addCard);

@@ -1,5 +1,4 @@
 .popup-image__container{
-    width: 100%;
     max-width: 75vw;
     max-height: 75vh;
     display: flex;
@@ -8,6 +7,4 @@
     justify-content: center;
     position: relative;
     margin: auto auto;
-    /* transform: translate(50%,50%); */
-    /* z-index:  2; */
 }
