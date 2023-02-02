@@ -1,5 +1,11 @@
-const popup = document.querySelector('.popup');
-const popupClose = document.querySelector('.close-icon__image');
+const popups = document.querySelectorAll('.popup');
+const closeButtons = document.querySelectorAll('.close-icon');
+
+const popupProfile = document.querySelector('.profile-popup');
+const popupAdd = document.querySelector('.popup_type_add');
+const popupImage = document.querySelector('.popup-image');
+
+// const popupClose = document.querySelector('.close-icon');
 const buttonEdit = document.querySelector('.profile__edit-button');
 
 const popupForm = document.querySelector('.popup__form');
@@ -9,30 +15,37 @@ const formInputSubtitle = document.querySelector('#popup__input-subtitle');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
-function openPopup() {
-    popup.classList.add('popup_opened');
-    formInputTitle.value = profileTitle.textContent;
-    formInputSubtitle.value = profileSubtitle.textContent;
-} // функция открывает попап и заносит вэлью значние из инпутов в текст классов profile__title и profile__subtitle
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(0));
+  button.addEventListener('click', () => closePopup(1));
+});
 
-function closePopup() {
-    popup.classList.remove('popup_opened');
-} // функция закрывает попап
+function openPopup(index) {
+  popups[index].classList.add('popup_opened'); 
+} 
+function closePopup(index) {
+  popups[index].classList.remove('popup_opened');
+} 
 
+function gInout() {
+  formInputTitle.value = profileTitle.textContent;
+  formInputSubtitle.value = profileSubtitle.textContent;
+}
 function getInput(evt) {
     evt.preventDefault();
     profileTitle.textContent = formInputTitle.value;
     profileSubtitle.textContent = formInputSubtitle.value;
-    closePopup();
+    closePopup(0);
 } // функция получает значение влью введенное в поля и заменяет текст классов profile__title и profile__subtitle
 
-buttonEdit.addEventListener('click', openPopup);
-popupClose.addEventListener('click', closePopup);
+buttonEdit.addEventListener('click', ()=> openPopup(0));
+buttonEdit.addEventListener('click', gInout);
 popupForm.addEventListener('submit', getInput);
 
 // вторая проектная работа по JS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const popupAdd = document.querySelector('.popup_type_add')
+
 const buttonAdd = document.querySelector('.profile__add-button');
 const popupCloseAdd = document.querySelector('.close-icon_type_add');
 const popupFormAdd = document.querySelector('.popup__form_type_add');
@@ -46,10 +59,10 @@ const formInputSubtitleAdd = document.querySelector('#popup__input-subtitle_type
 const cardImage = templateElement.querySelector('.element__image');
 const cardTitle = templateElement.querySelector('.element__title');
 
-const popupImage = document.querySelector('.popup-image');
+
 const popupImageText = document.querySelector('.popup-image__discription');
 const popupImageImage = document.querySelector('.popup-image__image');
-popupCloseImg = document.querySelector('.close-icon_theme_popup-image');
+const popupCloseImg = document.querySelector('.close-icon_theme_popup-image');
 const initialCards = [
   {
     name: 'Архыз',
@@ -103,15 +116,15 @@ function renderCards() {
 renderCards();
 
 
-function openPopupAdd() {
-    popupAdd.classList.add('popup_opened');
-}
-function closePopupAdd() {
-    popupAdd.classList.remove('popup_opened');
-}
-function closePopupImg() {
-    popupImage.classList.remove('popup-image_opened');
-} 
+// function openPopupAdd() {
+//     popupAdd.classList.add('popup_opened');
+// }
+// function closePopupAdd() {
+//     popupAdd.classList.remove('popup_opened');
+// }
+// function closePopupImg() {
+//     popupImage.classList.remove('popup-image_opened');
+// } 
 function likeFunc(evt){
     evt.target.classList.toggle('element__like_active');
 }
@@ -139,9 +152,10 @@ function addCard(evt) {
   closePopupAdd();
 }
 
-popupCloseImg.addEventListener('click', closePopupImg);
-buttonAdd.addEventListener('click', openPopupAdd);
-popupCloseAdd.addEventListener('click', closePopupAdd);
+// popupCloseImg.addEventListener('click', closePopupImg);
+// popupClose.addEventListener('click', ()=> closePopup(1));
+buttonAdd.addEventListener('click', ()=> openPopup(1));
+// popupCloseAdd.addEventListener('click', closePopupAdd);
 popupFormAdd.addEventListener('submit', addCard);
 
 
