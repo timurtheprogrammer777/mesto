@@ -1,11 +1,11 @@
-const popup = document.querySelector('.popup');
+
 const popupProfile = document.querySelector('.profile-popup');
 const closeButtons = document.querySelectorAll('.close-icon');
 
 const popupClose = document.querySelector('.close-icon__image');
 const buttonEdit = document.querySelector('.profile__edit-button');
 
-const popupForm = popup.querySelector('.popup__form');
+const popupFormProfile = document.querySelector('.popup__form_type_profile');
 const formInputTitle = document.querySelector('#popup__input-title');
 const formInputSubtitle = document.querySelector('#popup__input-subtitle');
 
@@ -37,9 +37,11 @@ closeButtons.forEach(button => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
-buttonEdit.addEventListener('click', () => openPopup(popupProfile));
-buttonEdit.addEventListener('click', inputText);
-popupForm.addEventListener('submit', getInput);
+buttonEdit.addEventListener('click', () => {
+  openPopup(popupProfile);
+  inputText();
+});
+popupFormProfile.addEventListener('submit', getInput);
 
 // вторая проектная работа по JS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
