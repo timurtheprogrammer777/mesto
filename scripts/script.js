@@ -130,3 +130,6 @@ function likeFunc(evt){
 
 popupFormAdd.addEventListener('submit', addCard);
 buttonAdd.addEventListener('click', () => openPopup(popupAdd));
+
+//////////////////////////////////////////////////
+

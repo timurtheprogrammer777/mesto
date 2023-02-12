@@ -55,10 +55,12 @@
                         <img class="close-icon__image" src="./images/Close_Icon.svg" alt="Иконка закрытия попапа">
                     </button>
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <form class="popup__form popup__form_type_profile" action="#" name="form">
-                        <input class="popup__input" id="popup__input-title" name="popup__input-title" type="text" >
-                        <input class="popup__input" id="popup__input-subtitle" name="popup__input-subtitle" type="text" >
-                        <button class="popup__button" type="submit">Сохранить</button>
+                    <form class="popup__form popup__form_type_profile" action="#" name="form" novalidate>
+                        <input required minlength="2" maxlength="40" type="text" class="popup__input" id="popup__input-title" name="popup__input-title">
+                        <span class="popup__input-error">123e3e3ee33e3e</span>
+                        <input required minlength="2" maxlength="200" type="text" class="popup__input" id="popup__input-subtitle" name="popup__input-subtitle">
+                        <span class="popup__input-error">123e3e3e3e33e</span>
+                        <button class="popup__button popup__button_type_profile" type="submit">Сохранить</button>
                     </form>
                 </div>
             </div>
@@ -69,9 +71,11 @@
                         <img class="close-icon__image" src="./images/Close_Icon.svg" alt="Иконка закрытия попапа">
                     </button>
                     <h2 class="popup__title popup__title_type_add">Новое место</h2>
-                    <form class="popup__form popup__form_type_add" action="#" name="form-add">
-                        <input class="popup__input" placeholder="Название" id="popup__input-title_type_add" name="popup__input-title_type_add" type="text" >
-                        <input class="popup__input" placeholder="Ссылка на картинку" id="popup__input-subtitle_type_add" name="popup__input-subtitle_type_add" type="text" >
+                    <form class="popup__form popup__form_type_add" action="#" name="form-add" >
+                        <input required minlength="2" maxlength="30" type="text" class="popup__input" placeholder="Название" id="popup__input-title_type_add" name="popup__input-title_type_add">
+                        <span class="popup__input-error popup__input-error-text">123e3e3ee33e3e</span>
+                        <input required type="url" class="popup__input" placeholder="Ссылка на картинку" id="popup__input-subtitle_type_add" name="popup__input-subtitle_type_add">
+                        <span class="popup__input-error popup__input-error-url">123e3e3e3e33e</span>
                         <button class="popup__button popup__button_type_add" type="submit">Создать</button>
                     </form>
                 </div>
@@ -95,6 +99,7 @@
         </footer>
 
     </div>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js" defer></script>
+    <script src="./scripts/script.js" defer></script>
 </body>
 </html>
