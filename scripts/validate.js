@@ -5,7 +5,7 @@ const enableValidation = ({formSelector, inputSelector,  invalidInputClass, subm
       const inputs = Array.from(form.querySelectorAll(inputSelector));
       const button = form.querySelector(submitButtonSelector);
       inputs.forEach(input => {
-         input.addEventListener('input', (evt) => handleFormInput(evt, form, invalidInputClass, button, inactiveButtonClass));
+         input.addEventListener('input', (evt) => handleFormInput(evt, form, invalidInputClass, button, inactiveButtonClass, inputs));
       });
       form.addEventListener('submit', handleFormSubmit);
    });
@@ -15,9 +15,11 @@ const handleFormSubmit = (evt) => {
    evt.preventDefault();
 }
 
-const toggleButtonState = (button, inactiveButtonClass) => {
+const toggleButtonState = (button, inactiveButtonClass, buttonState) => {
+   if(buttonState) {
+      disableButton(button, inactiveButtonClass);
+   } else
    enableButton(button, inactiveButtonClass);
-   disableButton(button, inactiveButtonClass);
 }
 
 const checkInputValidity = (input, errorElement, invalidInputClass) => {
@@ -29,11 +31,12 @@ const checkInputValidity = (input, errorElement, invalidInputClass) => {
    }
 }
  
-const handleFormInput = (evt, form, invalidInputClass, button, inactiveButtonClass) => {
+const handleFormInput = (evt, form, invalidInputClass, button, inactiveButtonClass, inputs) => {
    const input = evt.target;
    const errorElement = form.querySelector(`.popup__input-error-${input.name}`);
    checkInputValidity(input, errorElement, invalidInputClass);
-   toggleButtonState(button, inactiveButtonClass);
+   const buttonState = hasInvalidInput(inputs);
+   toggleButtonState(button, inactiveButtonClass, buttonState);
 }
 
 const showError = (input, errorElement, invalidInputClass) => {
@@ -46,14 +49,18 @@ const hideError = (input, errorElement, invalidInputClass) => {
    errorElement.textContent = '';
 }
 
-const disableButton = (submitButtonSelector, inactiveButtonClass) => {
+const disableButton = (submitButtonSelector,  inactiveButtonClass) => {
    submitButtonSelector.classList.add(inactiveButtonClass);
-   errorElement.disabled = true;
+   submitButtonSelector.disabled = true;
 }
  
-const enableButton = (submitButtonSelector, inactiveButtonClass) => {
+const enableButton = (submitButtonSelector,  inactiveButtonClass) => {
    submitButtonSelector.classList.remove(inactiveButtonClass);
-   errorElement.disabled = false;
+   submitButtonSelector.disabled = false;
+}
+
+const hasInvalidInput = (inputs) => {
+   return inputs.some(input => !input.validity.valid);
 }
 
  enableValidation  ({
