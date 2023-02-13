@@ -63,7 +63,7 @@ const hasInvalidInput = (inputs) => {
    return inputs.some(input => !input.validity.valid);
 }
 
- enableValidation  (config);
+enableValidation  (config);
     
 
 
