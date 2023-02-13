@@ -39,10 +39,6 @@ function inputText() {
   formInputTitle.value = profileTitle.textContent;
   formInputSubtitle.value = profileSubtitle.textContent;
 }
-// function lala() {
-//   profileTitle.textContent = '';
-//   profileSubtitle.textContent = '';
-// }
 
 function getInput(evt) {
   evt.preventDefault();
