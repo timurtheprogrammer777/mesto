@@ -12,29 +12,24 @@ const formInputSubtitle = document.querySelector('#popup__input-subtitle');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
-
-
-
-
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 
-  document.addEventListener('keydown', (evt) => {
-    if(evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  })
+  popup.addEventListener('mousedown', (evt) => closeOverlay(evt, popup));
+  document.addEventListener('keydown', (evt) => CloseEsc(evt, popup));
 } 
 
+function CloseEsc(evt, popup) {
+  if(evt.key =='Escape') {
+    closePopup(popup);
+  }
+}
 
-// function CloseEsc() {
-//   document.addEventListener('keydowm', (evt) => {
-//     if(evt.key =='Escape') {
-//       closePopup();
-//     }
-//   });
-// }
-
+function closeOverlay(evt, popup) {
+  if(evt.target === popup) {
+    closePopup(popup);
+  }
+}
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
@@ -44,6 +39,10 @@ function inputText() {
   formInputTitle.value = profileTitle.textContent;
   formInputSubtitle.value = profileSubtitle.textContent;
 }
+// function lala() {
+//   profileTitle.textContent = '';
+//   profileSubtitle.textContent = '';
+// }
 
 function getInput(evt) {
   evt.preventDefault();
@@ -64,7 +63,7 @@ buttonEdit.addEventListener('click', () => {
 popupFormProfile.addEventListener('submit', getInput);
 
 // вторая проектная работа по JS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// const buttonSubmitProfile = document.querySelector('.popup__button_type_profile');
+
 const buttonSubmitAdd = document.querySelector('.popup__button_type_add');
 
 const popupAdd = document.querySelector('.popup_type_add')
@@ -156,5 +155,5 @@ buttonAdd.addEventListener('click', () => {
   disableButton(buttonSubmitAdd, config.inactiveButtonClass); 
 });
 
-//////////////////////////////////////////////////
+
 
