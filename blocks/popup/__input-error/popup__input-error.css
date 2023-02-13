@@ -1,4 +1,7 @@
 .popup__input-error{
+    box-sizing: border-box;
+    max-width: 350px;
+    height: 26px;
     color: #FF0000;
     font-size: 12px;
     font-weight: 400;
