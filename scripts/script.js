@@ -16,10 +16,10 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 
   popup.addEventListener('mousedown', (evt) => closeOverlay(evt, popup));
-  document.addEventListener('keydown', (evt) => CloseEsc(evt, popup));
+  document.addEventListener('keydown', (evt) => closeEsc(evt, popup));
 } 
 
-function CloseEsc(evt, popup) {
+function closeEsc(evt, popup) {
   if(evt.key =='Escape') {
     closePopup(popup);
   }
@@ -33,14 +33,16 @@ function closeOverlay(evt, popup) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('mousedown', (evt) => closeOverlay(evt, popup));
+  document.removeEventListener('keydown', (evt) => closeEsc(evt, popup));
 } 
 
-function inputText() {
+function fillProfileInputs() {
   formInputTitle.value = profileTitle.textContent;
   formInputSubtitle.value = profileSubtitle.textContent;
 }
 
-function getInput(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = formInputTitle.value;
   profileSubtitle.textContent = formInputSubtitle.value;
@@ -54,9 +56,9 @@ closeButtons.forEach(button => {
 
 buttonEdit.addEventListener('click', () => {
   openPopup(popupProfile);
-  inputText();
+  fillProfileInputs();
 });
-popupFormProfile.addEventListener('submit', getInput);
+popupFormProfile.addEventListener('submit', handleProfileFormSubmit);
 
 // вторая проектная работа по JS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
