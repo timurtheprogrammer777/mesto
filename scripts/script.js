@@ -1,4 +1,3 @@
-
 const popupProfile = document.querySelector('.profile-popup');
 const closeButtons = document.querySelectorAll('.close-icon');
 
@@ -15,27 +14,29 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 
-  popup.addEventListener('mousedown', (evt) => closeOverlay(evt, popup));
-  document.addEventListener('keydown', (evt) => closeEsc(evt, popup));
-} 
+  popup.addEventListener('mousedown', closeOverlay);
+  document.addEventListener('keydown', closeByEscape);
+}
 
-function closeEsc(evt, popup) {
-  if(evt.key =='Escape') {
-    closePopup(popup);
+function closeByEscape(evt) {
+  if (evt.key == 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
 }
 
-function closeOverlay(evt, popup) {
-  if(evt.target === popup) {
-    closePopup(popup);
+function closeOverlay(evt) {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (evt.target === openedPopup) {
+    closePopup(openedPopup);
   }
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('mousedown', (evt) => closeOverlay(evt, popup));
-  document.removeEventListener('keydown', (evt) => closeEsc(evt, popup));
-} 
+  popup.removeEventListener('mousedown', closeOverlay);
+  document.removeEventListener('keydown', closeByEscape);
+}
 
 function fillProfileInputs() {
   formInputTitle.value = profileTitle.textContent;
@@ -77,8 +78,7 @@ const formInputSubtitleAdd = document.querySelector('#popup__input-subtitle_type
 const popupImageText = document.querySelector('.popup-image__discription');
 const popupImageImage = document.querySelector('.popup-image__image');
 const popupImage = document.querySelector('.popup-image');
-const initialCards = [
-  {
+const initialCards = [{
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
@@ -102,7 +102,7 @@ const initialCards = [
     name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
-]; 
+];
 
 function createCard(item) {
   const card = templateElement.cloneNode(true);
@@ -115,18 +115,18 @@ function createCard(item) {
 
   const cardImage = card.querySelector('.element__image');
   cardImage.addEventListener('click', () => {
-  openPopup(popupImage);
-  popupImageImage.src = item.link;
-  popupImageImage.alt = item.name;
-  popupImageText.textContent = item.name;
+    openPopup(popupImage);
+    popupImageImage.src = item.link;
+    popupImageImage.alt = item.name;
+    popupImageText.textContent = item.name;
   });
 
   return card;
 }
 
 function renderCards() {
-  const cards = initialCards.map( item => {
-  return createCard(item);
+  const cards = initialCards.map(item => {
+    return createCard(item);
   });
 
   elementList.append(...cards);
@@ -136,22 +136,22 @@ renderCards();
 function addCard(evt) {
   evt.preventDefault();
   const title = formInputTitleAdd.value;
-  const link =  formInputSubtitleAdd.value;
-  const card = createCard({name: title, link: link});
+  const link = formInputSubtitleAdd.value;
+  const card = createCard({
+    name: title,
+    link: link
+  });
   closePopup(popupAdd);
   evt.target.reset();
   elementList.prepend(card);
 }
 
-function likeFunc(evt){
+function likeFunc(evt) {
   evt.target.classList.toggle('element__like_active');
 }
 
 popupFormAdd.addEventListener('submit', addCard);
 buttonAdd.addEventListener('click', () => {
   openPopup(popupAdd);
-  disableButton(buttonSubmitAdd, config.inactiveButtonClass); 
+  disableButton(buttonSubmitAdd, config.inactiveButtonClass);
 });
-
-
-
