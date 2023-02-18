@@ -106,7 +106,7 @@ function createCard(item) {
   cardImage.src = item.link;
   cardImage.alt = item.name;
 
-  card.querySelector('.element__button').addEventListener('click', likeFunc);
+  card.querySelector('.element__button').addEventListener('click', toggleLike);
   card.querySelector('.element__trash-icon').addEventListener('click', () => card.remove());
 
   cardImage.addEventListener('click', () => {
@@ -119,7 +119,7 @@ function createCard(item) {
   return card;
 }
 
-function likeFunc(evt) {
+function toggleLike(evt) {
   evt.target.classList.toggle('element__like_active');
 }
 

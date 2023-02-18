@@ -12,6 +12,7 @@ const enableValidation = ({
       inputs.forEach(input => {
          input.addEventListener('input', (evt) => handleFormInput(evt, form, invalidInputClass, button, inactiveButtonClass, inputs));
       });
+      disableButton(button, inactiveButtonClass);
       form.addEventListener('reset', () => {
          disableButton(button, inactiveButtonClass);
       });
