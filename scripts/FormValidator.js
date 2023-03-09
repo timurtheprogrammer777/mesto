@@ -71,6 +71,4 @@ export class FormValidator {
         return inputs.some(input => !input.validity.valid);
     }
 
-
-
 }

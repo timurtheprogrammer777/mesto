@@ -1,30 +1,30 @@
 export class Card {
     static _template = document.querySelector('.template__element').content;
-    constructor(selectors, sel) {
-        this._selectors = selectors;
-        this._sel = sel;
+    constructor(cardSelectors, popupSelectors) {
+        this._cardSelectors = cardSelectors;
+        this._popupSelectors = popupSelectors;
     }
 
     createCard(item) {
 
-        const card = Card._template.querySelector(this._selectors.element).cloneNode(true);
-        const cardImage = card.querySelector(this._selectors.element__image);
+        const card = Card._template.querySelector(this._cardSelectors.element).cloneNode(true);
+        const cardImage = card.querySelector(this._cardSelectors.element__image);
         cardImage.src = item.link;
         cardImage.alt = item.name;
-        card.querySelector(this._selectors.element__title).textContent = item.name;
-        card.querySelector(this._selectors.element__button).addEventListener('click', this._toggleLike);
-        card.querySelector(this._selectors.element__trashIcon).addEventListener('click', () => card.remove());
+        card.querySelector(this._cardSelectors.element__title).textContent = item.name;
+        card.querySelector(this._cardSelectors.element__button).addEventListener('click', this._toggleLike);
+        card.querySelector(this._cardSelectors.element__trashIcon).addEventListener('click', () => card.remove());
         cardImage.addEventListener('click', () => {
-            this._openPopup(this._sel, item);
+            this._openPopup(this._popupSelectors, item);
             document.addEventListener('keydown', this._closeByEscape.bind(this));
         });
 
         return card;
     }
-    _openPopup(sel, item) {
-        const popupImage = document.querySelector(sel.popupImage);
-        const popupImageImage = popupImage.querySelector(sel.popupImageImage);
-        const popupImageText = popupImage.querySelector(sel.popupImageText);
+    _openPopup(popupSelectors, item) {
+        const popupImage = document.querySelector(this._popupSelectors.popupImage);
+        const popupImageImage = popupImage.querySelector(this._popupSelectors.popupImageImage);
+        const popupImageText = popupImage.querySelector(this._popupSelectors.popupImageText);
 
         popupImageImage.src = item.link;
         popupImageImage.alt = item.name;
@@ -44,11 +44,7 @@ export class Card {
             this._closePopup(openedPopup);
         }
     }
-
     _toggleLike(evt) {
         evt.target.classList.toggle('element__like_active');
-    }
-    getInfo() {
-        console.log(this);
     }
 }
