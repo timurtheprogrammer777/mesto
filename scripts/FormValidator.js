@@ -1,7 +1,7 @@
 export class FormValidator {
-    constructor(config, formsValidation) {
+    constructor(config, form) {
         this._config = config;
-        this._formsValidation = formsValidation;
+        this._form = form;
     }
 
     enableValidation() {
@@ -22,7 +22,6 @@ export class FormValidator {
     _handleFormSubmit(evt) {
         evt.preventDefault();
     }
-
     _toggleButtonState(button, inactiveButtonClass, buttonState) {
         if (buttonState) {
             this._disableButton(button, inactiveButtonClass);
