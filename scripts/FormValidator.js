@@ -2,22 +2,32 @@ export class FormValidator {
     constructor(config, form) {
         this._config = config;
         this._form = form;
+        this._inputs = Array.from(this._form.querySelectorAll(this._config.inputSelector));
+        this._button = this._form.querySelector(this._config.submitButtonSelector);
     }
 
     enableValidation() {
-        const forms = document.querySelectorAll(this._config.formSelector);
-        forms.forEach(form => {
-            const inputs = Array.from(form.querySelectorAll(this._config.inputSelector));
-            const button = form.querySelector(this._config.submitButtonSelector);
-            inputs.forEach(input => {
-                input.addEventListener('input', (evt) => this._handleFormInput(evt, form, this._config.invalidInputClass, button, this._config.inactiveButtonClass, inputs));
-            });
-            this._disableButton(button, this._config.inactiveButtonClass);
-            form.addEventListener('reset', () => {
-                this._disableButton(button, this._config.inactiveButtonClass);
-            });
+        this._inputs = Array.from(this._form.querySelectorAll(this._config.inputSelector));
+        this._button = this._form.querySelector(this._config.submitButtonSelector);
+        this._inputs.forEach(input => {
+            input.addEventListener('input', (evt) => this._handleFormInput(evt, this._form, this._config.invalidInputClass, this._button, this._config.inactiveButtonClass, this._inputs));
+        });
+        this._disableButton(this._button, this._config.inactiveButtonClass);
+        this._form.addEventListener('reset', () => {
+            this._disableButton(this._button, this._config.inactiveButtonClass);
         });
     }
+    deleteErrorMessage() {
+        const errorTextElements = document.querySelectorAll(this._config.inputErrorClass);
+        const errorClassElements = document.querySelectorAll('.' + this._config.invalidInputClass);
+        errorTextElements.forEach((errorTextElement) => {
+            errorTextElement.textContent = '';
+        });
+        errorClassElements.forEach((errorClassElement) => {
+            errorClassElement.classList.remove(this._config.invalidInputClass);
+        });
+    }
+
 
     _handleFormSubmit(evt) {
         evt.preventDefault();

@@ -6,6 +6,7 @@ export class Card {
         this._popupImageText = popupImageText;
         this._popupImageImage = popupImageImage;
         this._closeByEscape = this._closeByEscape.bind(this);
+        this._handleCloseEsc = this._handleCloseEsc.bind(this);
     }
 
     createCard(item) {
@@ -28,10 +29,12 @@ export class Card {
         const cardImage = card.querySelector(this._cardSelectors.element__image);
         cardImage.addEventListener('click', () => {
             this._openPopup(this._popupSelectors, item);
-            document.addEventListener('keydown', (evt) => this._closeByEscape(evt, this._popupImage));
+            document.addEventListener('keydown', this._handleCloseEsc);
         });
     }
-
+    _handleCloseEsc(evt) {
+        this._closeByEscape(evt);
+    }
     _openPopup(popupImage, item) {
         this._popupImageImage.src = item.link;
         this._popupImageImage.alt = item.name;
@@ -41,10 +44,10 @@ export class Card {
     }
     _closePopup() {
         this._popupImage.classList.remove('popup_opened');
-        document.removeEventListener('keydown', this._closeByEscape);
+        document.removeEventListener('keydown', this._handleCloseEsc);
     }
     _closeByEscape(evt) {
-        if (evt.key == 'Escape') {
+        if (evt.key === 'Escape') {
             this._closePopup(this._popupImage);
         }
     }

@@ -64,20 +64,9 @@ function closePopup(popup) {
 }
 
 function closeByEscape(evt, popup) {
-  if (evt.key == 'Escape') {
+  if (evt.key === 'Escape') {
     closePopup(popup);
   }
-}
-
-function deleteErrorMessage() {
-  const errorTextElements = document.querySelectorAll(config.inputErrorClass);
-  const errorClassElements = document.querySelectorAll('.' + config.invalidInputClass);
-  errorTextElements.forEach((errorTextElement) => {
-    errorTextElement.textContent = '';
-  });
-  errorClassElements.forEach((errorClassElement) => {
-    errorClassElement.classList.remove('popup__input_type_error');
-  });
 }
 
 function fillProfileInputs() {
@@ -134,7 +123,7 @@ function addCard(evt) {
     link: link
   });
 
-  closePopup(popupAdd);
+  closePopup(popupAdd, evt);
   evt.target.reset();
   elementList.prepend(newCard);
 }
@@ -142,7 +131,7 @@ function addCard(evt) {
 buttonEdit.addEventListener('click', () => {
   openPopup(popupProfile);
   fillProfileInputs();
-  deleteErrorMessage();
+  validationProfile.deleteErrorMessage();
 });
 
 popupFormProfile.addEventListener('submit', handleProfileFormSubmit);
@@ -151,7 +140,7 @@ popupFormAdd.addEventListener('submit', addCard);
 buttonAdd.addEventListener('click', () => {
   openPopup(popupAdd);
   unfillAddInputs();
-  deleteErrorMessage();
+  validationAdd.deleteErrorMessage();
 });
 
 const validationProfile = new FormValidator(config, popupFormProfile);
